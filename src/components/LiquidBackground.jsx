@@ -1,0 +1,82 @@
+import React, { useEffect } from 'react';
+import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
+
+const LiquidBackground = () => {
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Smooth spring physics for mouse tracking
+    const springConfig = { damping: 30, stiffness: 100 };
+    const springX = useSpring(mouseX, springConfig);
+    const springY = useSpring(mouseY, springConfig);
+
+    // Reactive transforms for different blob layers
+    const layer1X = useTransform(springX, [-0.5, 0.5], [-150, 150]);
+    const layer1Y = useTransform(springY, [-0.5, 0.5], [-150, 150]);
+
+    const layer2X = useTransform(springX, [-0.5, 0.5], [100, -100]);
+    const layer2Y = useTransform(springY, [-0.5, 0.5], [100, -100]);
+
+    const layer3X = useTransform(springX, [-0.5, 0.5], [-50, 50]);
+    const layer3Y = useTransform(springY, [-0.5, 0.5], [-50, 50]);
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            mouseX.set(e.clientX / window.innerWidth - 0.5);
+            mouseY.set(e.clientY / window.innerHeight - 0.5);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [mouseX, mouseY]);
+
+    return (
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {/* Corner Flare 1: Top-Left */}
+            <motion.div
+                style={{ x: layer3X, y: layer3Y }}
+                className="absolute -top-[10%] -left-[10%] w-[40vw] h-[40vw] bg-primary/20 rounded-full blur-[300px] mix-blend-screen"
+                animate={{
+                    opacity: [0.4, 0.7, 0.4],
+                    scale: [1, 1.1, 1]
+                }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Corner Flare 2: Top-Right */}
+            <motion.div
+                style={{ x: layer2X, y: layer1Y }}
+                className="absolute -top-[10%] -right-[10%] w-[45vw] h-[45vw] bg-primary/10 rounded-full blur-[350px] mix-blend-screen"
+                animate={{
+                    opacity: [0.3, 0.6, 0.3],
+                    scale: [1, 1.15, 1]
+                }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Corner Flare 3: Bottom-Left */}
+            <motion.div
+                style={{ x: layer1X, y: layer2Y }}
+                className="absolute -bottom-[10%] -left-[10%] w-[50vw] h-[50vh] bg-primary/15 rounded-full blur-[400px] mix-blend-screen"
+                animate={{
+                    opacity: [0.4, 0.8, 0.4],
+                    scale: [1, 1.05, 1]
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Corner Flare 4: Bottom-Right */}
+            <motion.div
+                style={{ x: layer2X, y: layer3Y }}
+                className="absolute -bottom-[10%] -right-[10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[300px] mix-blend-screen"
+                animate={{
+                    opacity: [0.2, 0.5, 0.2],
+                    scale: [1, 1.2, 1]
+                }}
+                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            />
+        </div>
+    );
+};
+
+export default LiquidBackground;

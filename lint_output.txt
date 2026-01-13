@@ -1,0 +1,111 @@
+
+> cv-site@0.0.0 lint
+> eslint .
+
+
+C:\Users\outof\cv site\src\components\Dashboard.jsx
+  4:10   error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                     no-unused-vars
+  9:77   error  'addExperience' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  9:110  error  'deleteExperience' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\outof\cv site\src\components\Hero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\outof\cv site\src\components\ProjectCard.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\outof\cv site\src\components\ProjectModal.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\outof\cv site\src\components\Resume.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\outof\cv site\src\context\AuthContext.jsx
+  6:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\outof\cv site\src\context\DataContext.jsx
+   6:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-refresh/only-export-components
+  14:9   error  Error: Cannot access variable before it is declared
+
+`fetchProjects` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  12 |
+  13 |     useEffect(() => {
+> 14 |         fetchProjects();
+     |         ^^^^^^^^^^^^^ `fetchProjects` accessed before it is declared
+  15 |         fetchExperience();
+  16 |         fetchSkills();
+  17 |
+
+  19 |     }, []);
+  20 |
+> 21 |     const fetchProjects = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 22 |         const { data, error } = await supabase.from('projects').select('*').order('id', { ascending: true });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 23 |         if (error) console.error('Error fetching projects:', error);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |         else setProjects(data || []);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |     };
+     | ^^^^^^^ `fetchProjects` is declared here
+  26 |
+  27 |     const fetchExperience = async () => {
+  28 |         const { data, error } = await supabase.from('experience').select('*').order('id', { ascending: true });                                                                              react-hooks/immutability
+  15:9   error  Error: Cannot access variable before it is declared
+
+`fetchExperience` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  13 |     useEffect(() => {
+  14 |         fetchProjects();
+> 15 |         fetchExperience();
+     |         ^^^^^^^^^^^^^^^ `fetchExperience` accessed before it is declared
+  16 |         fetchSkills();
+  17 |
+  18 |         // Optional: Real-time subscriptions could be added here
+
+  25 |     };
+  26 |
+> 27 |     const fetchExperience = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |         const { data, error } = await supabase.from('experience').select('*').order('id', { ascending: true });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |         if (error) console.error('Error fetching experience:', error);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 30 |         else setExperience(data || []);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 31 |     };
+     | ^^^^^^^ `fetchExperience` is declared here
+  32 |
+  33 |     const fetchSkills = async () => {
+  34 |         const { data, error } = await supabase.from('skills').select('*').order('id', { ascending: true });  react-hooks/immutability
+  16:9   error  Error: Cannot access variable before it is declared
+
+`fetchSkills` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  14 |         fetchProjects();
+  15 |         fetchExperience();
+> 16 |         fetchSkills();
+     |         ^^^^^^^^^^^ `fetchSkills` accessed before it is declared
+  17 |
+  18 |         // Optional: Real-time subscriptions could be added here
+  19 |     }, []);
+
+  31 |     };
+  32 |
+> 33 |     const fetchSkills = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |         const { data, error } = await supabase.from('skills').select('*').order('id', { ascending: true });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 35 |         if (error) console.error('Error fetching skills:', error);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |         else setSkills(data || []);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |     };
+     | ^^^^^^^ `fetchSkills` is declared here
+  38 |
+  39 |     // Projects CRUD
+  40 |     const addProject = async (newProject) => {                                                                                                                                          react-hooks/immutability
+
+✖ 12 problems (12 errors, 0 warnings)
+
