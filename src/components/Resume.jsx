@@ -340,9 +340,9 @@ const Resume = () => {
                                         viewport={{ once: true }}
                                         transition={{ delay: window.innerWidth > 640 ? index * 0.05 : 0 }}
                                         style={{ willChange: 'opacity' }}
-                                        className="group bg-white/[0.02] sm:backdrop-blur-3xl border border-white/5 p-5 sm:p-8 md:p-10 rounded-xl sm:rounded-[2rem] md:rounded-[2.5rem] sm:hover:bg-white/[0.04] sm:hover:border-primary/40 transition-all duration-700 relative overflow-hidden flex flex-col h-full"
+                                        className="group bg-white/[0.02] sm:backdrop-blur-3xl border border-white/5 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-[2rem] md:rounded-[2.5rem] sm:hover:bg-white/[0.04] sm:hover:border-primary/40 transition-all duration-700 relative overflow-hidden flex flex-col h-full"
                                     >
-                                        <div className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                        <div className="flex flex-col gap-3 sm:gap-4 mb-3 sm:mb-4">
                                             <div className="flex items-center gap-2">
                                                 <div className="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_rgba(255,59,48,0.8)]" />
                                                 <h4 className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
