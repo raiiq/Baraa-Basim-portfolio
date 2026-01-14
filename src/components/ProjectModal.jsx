@@ -4,21 +4,29 @@ import { X, Camera, Film, Calendar } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 
 const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
+    const [forceFullscreen, setForceFullscreen] = React.useState(false);
+
     React.useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
             document.body.classList.add('modal-active');
+            setForceFullscreen(initialFullscreen);
         } else {
             document.body.style.overflow = 'unset';
             document.body.classList.remove('modal-active');
+            setForceFullscreen(false);
         }
         return () => {
             document.body.style.overflow = 'unset';
             document.body.classList.remove('modal-active');
         };
-    }, [isOpen]);
+    }, [isOpen, initialFullscreen]);
 
     if (!project) return null;
+
+    const handleFullscreenLaunch = () => {
+        setForceFullscreen(true);
+    };
 
     return (
         <AnimatePresence>
@@ -55,10 +63,11 @@ const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
                                     <div className="w-full md:w-2/3 bg-black relative flex items-center justify-center flex-shrink-0">
                                         {project.video ? (
                                             <VideoPlayer
+                                                key={forceFullscreen ? 'fs-active' : 'fs-inactive'}
                                                 videoUrl={project.video}
                                                 title={project.title}
                                                 aspect_ratio={project.aspect_ratio || project.aspectRatio || '16/9'}
-                                                initialFullscreen={initialFullscreen}
+                                                initialFullscreen={forceFullscreen}
                                             />
                                         ) : (
                                             <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
@@ -69,19 +78,29 @@ const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
                                     <div className="w-full md:w-1/3 p-5 sm:p-6 md:p-8 border-t md:border-t-0 md:border-l border-white/10 flex flex-col bg-[#0a0a0a] sm:bg-[#121212] flex-grow overflow-y-auto">
                                         <span className="text-primary text-xs sm:text-sm font-bold tracking-widest uppercase mb-2">{project.category}</span>
                                         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{project.title}</h2>
-                                        <p className="text-gray-400 text-sm mb-4 sm:mb-6 flex items-center gap-2">
-                                            <Film size={16} /> {project.role}
-                                        </p>
-
-                                        {project.release_date && (
-                                            <p className="text-gray-400 text-sm mb-4 sm:mb-6 flex items-center gap-2">
-                                                <Calendar size={16} /> {new Date(project.release_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                        <div className="flex flex-wrap items-center gap-4 mb-4 sm:mb-6">
+                                            <p className="text-gray-400 text-sm flex items-center gap-2">
+                                                <Film size={16} /> {project.role}
                                             </p>
-                                        )}
+                                            {project.release_date && (
+                                                <p className="text-gray-400 text-sm flex items-center gap-2">
+                                                    <Calendar size={16} /> {new Date(project.release_date).toLocaleDateString('en-US', { year: 'numeric' })}
+                                                </p>
+                                            )}
+                                        </div>
 
-                                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 flex-grow">
+                                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                                             {project.description}
                                         </p>
+
+                                        {project.video && (
+                                            <button
+                                                onClick={handleFullscreenLaunch}
+                                                className="w-full mb-8 py-4 bg-primary text-white font-black uppercase tracking-[0.2em] text-[10px] sm:text-xs rounded-xl flex items-center justify-center gap-3 hover:bg-primary/80 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,59,48,0.3)]"
+                                            >
+                                                <Play size={16} fill="currentColor" /> Cinematic Playback // Full Screen
+                                            </button>
+                                        )}
 
                                         <div className="mt-auto">
                                             <h3 className="text-white font-semibold mb-3 flex items-center gap-2 text-sm sm:text-base">

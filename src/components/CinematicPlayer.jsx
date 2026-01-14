@@ -338,21 +338,23 @@ const CinematicPlayer = ({ videoUrl, title, initialFullscreen }) => {
                                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                 className="absolute bottom-full right-4 mb-4 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden z-50 min-w-[120px] shadow-2xl"
                             >
-                                <div className="py-2">
-                                    <div className="px-4 py-2 border-b border-white/5 mb-1">
-                                        <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.2em]">Quality</span>
+                                <div className="py-2 px-1">
+                                    <div className="px-4 py-3 border-b border-white/10 mb-2">
+                                        <span className="text-[10px] font-black text-white/50 uppercase tracking-[0.3em]">Stream Quality</span>
                                     </div>
-                                    {qualities.map((q) => (
-                                        <button
-                                            key={q.value}
-                                            onClick={() => handleQualityChange(q.value)}
-                                            className={`w-full px-4 py-2.5 text-left text-[10px] font-bold transition-all flex items-center justify-between group/q
-                                                ${currentQuality === q.value ? 'text-primary bg-primary/10' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
-                                        >
-                                            <span>{q.label}</span>
-                                            {currentQuality === q.value && <div className="w-1 h-1 rounded-full bg-primary shadow-[0_0_5px_rgba(255,59,48,1)]" />}
-                                        </button>
-                                    ))}
+                                    <div className="space-y-1">
+                                        {qualities.map((q) => (
+                                            <button
+                                                key={q.value}
+                                                onClick={() => handleQualityChange(q.value)}
+                                                className={`w-full px-4 py-3 text-left text-[11px] font-black transition-all flex items-center justify-between rounded-xl
+                                                    ${currentQuality === q.value ? 'text-primary bg-primary/10' : 'text-white/40 hover:text-white hover:bg-white/5'}`}
+                                            >
+                                                <span>{q.label}</span>
+                                                {currentQuality === q.value && <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(255,59,48,1)]" />}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
                             </motion.div>
                         )}
