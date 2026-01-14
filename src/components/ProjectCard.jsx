@@ -63,53 +63,53 @@ const ProjectCard = ({ project, onClick }) => {
                 </button>
             </div>
 
-            {/* HUD Overlay Slab - Redesigned for Absolute Stability */}
-            <div className="absolute inset-0 z-20 p-5 sm:p-8 md:p-10 pointer-events-none overflow-hidden flex flex-col justify-between">
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 sm:opacity-50 sm:group-hover:opacity-100 transition-opacity duration-700" />
+            {/* HUD Overlay Slab - Optimized for Zero-Overlap Stability */}
+            <div className="absolute inset-0 z-20 p-4 sm:p-6 md:p-8 pointer-events-none overflow-hidden flex flex-col justify-between">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90 sm:opacity-40 sm:group-hover:opacity-100 transition-opacity duration-700" />
 
-                {/* Top Row: Mission Header & Category */}
-                <div className="relative z-30 flex justify-between items-start opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 transform translate-y-0 sm:-translate-y-4 sm:group-hover:translate-y-0">
-                    <div className="flex flex-col gap-1.5">
+                {/* Top Row: Mission Header & Category - Subtle down-motion */}
+                <div className="relative z-30 flex justify-between items-start opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500 transform translate-y-0 sm:-translate-y-2 sm:group-hover:translate-y-0">
+                    <div className="flex flex-col gap-1 sm:gap-1.5">
                         <div className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(255,59,48,0.8)]" />
-                            <span className="text-[8px] sm:text-[10px] font-mono font-black text-primary uppercase tracking-[0.4em] sm:tracking-[0.6em] text-glow-red halation">
+                            <span className="text-[7px] sm:text-[9px] font-mono font-black text-primary uppercase tracking-[0.3em] sm:tracking-[0.5em] text-glow-red halation">
                                 MISSION // 00{project.id}
                             </span>
                         </div>
-                        <div className="bg-white/5 backdrop-blur-md border border-white/10 px-3 py-1 rounded-sm inline-flex items-center gap-2">
-                            <span className="text-[8px] font-mono text-white/40 uppercase tracking-[0.2em]">TYPE /</span>
-                            <span className="text-[9px] sm:text-[10px] font-black text-white uppercase tracking-[0.2em]">{project.category}</span>
+                        <div className="bg-white/5 backdrop-blur-md border border-white/10 px-2 py-0.5 sm:px-3 sm:py-1 rounded-sm inline-flex items-center gap-2">
+                            <span className="text-[7px] font-mono text-white/40 uppercase tracking-[0.2em]">TYPE /</span>
+                            <span className="text-[8px] sm:text-[9px] font-black text-white uppercase tracking-[0.2em]">{project.category}</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Section: Title & Metadata Grid */}
-                <div className="relative z-30 flex flex-col gap-5 sm:gap-8 translate-y-0 sm:translate-y-8 group-hover:translate-y-0 transition-all duration-700">
+                {/* Bottom Section: Title & Metadata Grid - Subtle up-motion */}
+                <div className="relative z-30 flex flex-col gap-3 sm:gap-6 translate-y-0 sm:translate-y-3 group-hover:translate-y-0 transition-all duration-700">
                     {/* Title with dedicated breathing room */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1.5">
                         <h3
-                            className="text-xl sm:text-3xl md:text-3xl lg:text-4xl font-black text-white leading-[1.1] uppercase tracking-tighter text-glow-strong halation break-words max-w-[90%]"
+                            className="text-lg sm:text-2xl md:text-2xl lg:text-3xl font-black text-white leading-[1.1] uppercase tracking-tighter text-glow-strong halation break-words max-w-[95%]"
                             style={{ fontFamily: project.font || 'IBM Plex Sans Arabic' }}
                         >
                             {project.title}
                         </h3>
-                        <div className="w-12 h-[2px] bg-primary/40 shadow-[0_0_10px_rgba(255,59,48,0.3)]" />
+                        <div className="w-8 h-[1.5px] bg-primary/40 shadow-[0_0_8px_rgba(255,59,48,0.3)]" />
                     </div>
 
                     {/* Metadata Grid - Fixed col structure for stability */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-5 border-t border-white/10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-1000 delay-150">
-                        <div className="flex flex-col gap-1">
-                            <span className="text-[7px] sm:text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em]">Designation.</span>
-                            <span className="text-[9px] sm:text-[11px] font-black text-white uppercase tracking-[0.2em] group-hover:text-primary transition-colors truncate">{project.role}</span>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pt-3 sm:pt-5 border-t border-white/10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-1000 delay-150">
+                        <div className="flex flex-col">
+                            <span className="text-[6px] sm:text-[7px] font-mono text-gray-500 uppercase tracking-[0.4em]">Designation.</span>
+                            <span className="text-[8px] sm:text-[10px] font-black text-white uppercase tracking-[0.1em] group-hover:text-primary transition-colors truncate">{project.role}</span>
                         </div>
-                        <div className="hidden md:flex flex-col gap-1 border-l border-white/10 pl-6">
-                            <span className="text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em]">Cinematics.</span>
-                            <span className="text-[11px] font-black text-white uppercase tracking-[0.2em] group-hover:text-primary transition-colors">Hi-Fi Optic</span>
+                        <div className="hidden md:flex flex-col border-l border-white/10 pl-4 sm:pl-6">
+                            <span className="text-[7px] font-mono text-gray-500 uppercase tracking-[0.4em]">Cinematics.</span>
+                            <span className="text-[10px] font-black text-white uppercase tracking-[0.1em] group-hover:text-primary transition-colors">Hi-Fi Optic</span>
                         </div>
                         {project.release_date && (
-                            <div className="flex flex-col gap-1 border-l border-white/10 pl-6">
-                                <span className="text-[7px] sm:text-[8px] font-mono text-gray-500 uppercase tracking-[0.4em]">Archived.</span>
-                                <span className="text-[9px] sm:text-[11px] font-black text-white uppercase tracking-[0.2em] group-hover:text-primary transition-colors">
+                            <div className="flex flex-col border-l border-white/10 pl-4 sm:pl-6">
+                                <span className="text-[6px] sm:text-[7px] font-mono text-gray-500 uppercase tracking-[0.4em]">Archived.</span>
+                                <span className="text-[8px] sm:text-[10px] font-black text-white uppercase tracking-[0.1em] group-hover:text-primary transition-colors">
                                     {new Date(project.release_date).toLocaleDateString('en-US', { year: 'numeric' })}
                                 </span>
                             </div>
