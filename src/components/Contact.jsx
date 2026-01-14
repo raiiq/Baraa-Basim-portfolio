@@ -2,6 +2,7 @@ import { useAuth } from '../context/AuthContext';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Instagram, Linkedin, Youtube, Twitter, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
     const { login, user } = useAuth();
@@ -182,7 +183,7 @@ const Contact = () => {
                     &copy; {new Date().getFullYear()} BARAA BASIM / CI-ALPHA OPS.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500">
-                    <a href="/admin" className="hover:text-primary transition-colors">System Console</a>
+                    <Link to="/admin" className="hover:text-primary transition-colors">System Console</Link>
                     <span>Precision Interface V.2.0</span>
                     <span>All Rights Encrypted</span>
                 </div>

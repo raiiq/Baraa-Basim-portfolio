@@ -50,7 +50,7 @@ const Gallery = () => {
                         <p className="text-gray-500 text-lg">No projects found. Add some from the dashboard!</p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
                         {projects.map((project) => (
                             <ProjectCard
                                 key={project.id}

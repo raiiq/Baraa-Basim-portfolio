@@ -50,10 +50,14 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async () => {
+        // Dynamically get the current origin to ensure it works on Replit, Localhost, etc.
+        const currentOrigin = window.location.origin;
+        console.log('Initiating login with redirect to:', currentOrigin);
+
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: window.location.origin
+                redirectTo: currentOrigin
             }
         });
         if (error) console.error("Login error:", error);
