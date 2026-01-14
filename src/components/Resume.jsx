@@ -212,12 +212,12 @@ const Resume = () => {
                             <span className="text-primary text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] sm:tracking-[0.6em] halation">Intelligence System // V.04</span>
                         </motion.div>
 
-                        <h2 className="text-[clamp(2rem,8vw,8rem)] font-black text-white uppercase tracking-tighter leading-[0.8] mb-2 sm:mb-4 shadow-black drop-shadow-2xl">
+                        <h2 className="text-[clamp(2.5rem,10vw,8rem)] font-black text-white uppercase tracking-tighter leading-[0.85] mb-4 sm:mb-6 shadow-black drop-shadow-2xl">
                             MASTER<br />
                             <span className="text-white/20 hover:text-white transition-colors duration-1000 cursor-default">DOSSIER.</span>
                         </h2>
 
-                        <p className="text-gray-500 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed max-w-xl border-l border-white/10 pl-4 sm:pl-6">
+                        <p className="text-gray-500 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-relaxed max-w-xl border-l border-white/10 pl-4 sm:pl-6">
                             Authorized personnel only. Accessing fully consolidated professional intelligence for <span className="text-white">Baraa Basim</span>.
                         </p>
                     </div>
@@ -259,14 +259,14 @@ const Resume = () => {
                                     <p className="text-lg sm:text-xl md:text-2xl text-white font-black leading-tight uppercase tracking-tighter">
                                         {professional_title}
                                     </p>
-                                    <div className="h-px w-16 sm:w-20 bg-primary/30" />
+                                    <div className="h-px w-12 sm:w-20 bg-primary/30" />
                                 </div>
 
-                                <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-medium">
+                                <p className="text-gray-400 text-[13px] sm:text-base leading-relaxed font-medium">
                                     {bio_detailed}
                                 </p>
 
-                                <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
+                                <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-6 sm:mt-8">
                                     {[
                                         { icon: Globe, label: "Origin", val: "Iraq" },
                                         { icon: Target, label: "Objective", val: "Innovation" },

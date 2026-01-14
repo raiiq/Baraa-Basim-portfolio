@@ -4,6 +4,20 @@ import { X, Camera, Film, Calendar } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 
 const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
+    React.useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-active');
+        } else {
+            document.body.style.overflow = 'unset';
+            document.body.classList.remove('modal-active');
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.body.classList.remove('modal-active');
+        };
+    }, [isOpen]);
+
     if (!project) return null;
 
     return (
@@ -16,27 +30,27 @@ const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50"
+                        className="fixed inset-0 bg-black/98 backdrop-blur-2xl z-[99999]"
                     />
 
                     {/* Modal Content - Full screen on mobile */}
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 pointer-events-none overflow-y-auto">
+                    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-0 sm:p-4 pointer-events-none overflow-y-auto custom-scrollbar">
                         <div className="w-full h-full sm:h-auto flex items-start sm:items-center justify-center pointer-events-auto">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                                className="bg-[#0a0a0a] sm:bg-[#1a1a1a] w-full sm:max-w-5xl h-full sm:h-auto sm:max-h-[90vh] sm:rounded-2xl overflow-hidden shadow-2xl relative flex flex-col"
+                                className="bg-[#050505] sm:bg-[#1a1a1a] w-full sm:max-w-5xl md:h-auto md:max-h-[90vh] sm:rounded-2xl overflow-hidden shadow-2xl relative flex flex-col"
                             >
                                 {/* Close Button - Larger on mobile for touch */}
                                 <button
                                     onClick={onClose}
-                                    className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-3 sm:p-2 bg-black/70 sm:bg-black/50 rounded-full hover:bg-primary transition-colors text-white touch-target"
+                                    className="absolute top-4 right-4 z-50 p-4 bg-primary text-white rounded-full sm:bg-black/50 sm:hover:bg-primary transition-all shadow-2xl active:scale-90"
                                 >
-                                    <X size={24} />
+                                    <X size={28} />
                                 </button>
 
-                                <div className="flex flex-col md:flex-row h-full overflow-y-auto">
+                                <div className="flex flex-col md:flex-row h-full">
                                     {/* Media Section (Top on mobile, Left on desktop) */}
                                     <div className="w-full md:w-2/3 bg-black relative flex items-center justify-center flex-shrink-0">
                                         {project.video ? (
@@ -80,6 +94,16 @@ const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
                                                     </span>
                                                 ))}
                                             </div>
+                                        </div>
+
+                                        {/* Mobile Dedicated Close Button */}
+                                        <div className="mt-10 sm:hidden">
+                                            <button
+                                                onClick={onClose}
+                                                className="w-full py-5 bg-white/[0.05] border border-white/10 rounded-2xl text-white font-black uppercase tracking-[0.2em] text-[10px] active:bg-primary transition-colors"
+                                            >
+                                                Termination Sequence // Close
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

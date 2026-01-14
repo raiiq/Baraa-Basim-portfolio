@@ -46,7 +46,7 @@ const Navbar = () => {
     const podSpring = { type: "spring", stiffness: 400, damping: 30 };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-8 flex justify-between items-center pointer-events-none">
+        <nav className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-4 sm:py-8 flex justify-between items-center pointer-events-none main-navbar">
             {/* Logo Pod */}
             <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -309,6 +309,14 @@ const Navbar = () => {
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
                         className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl lg:hidden flex flex-col pointer-events-auto"
                     >
+                        {/* Close button inside overlay */}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="absolute top-6 right-6 p-4 text-white hover:text-primary transition-colors"
+                        >
+                            <X size={32} />
+                        </button>
+
                         <div className="flex flex-col items-center justify-center flex-1 gap-8 p-10">
                             <div className="w-full space-y-2">
                                 <p className="text-[10px] text-primary font-black uppercase tracking-[0.4em] mb-6 text-center halation">Navigation Node</p>
@@ -372,13 +380,6 @@ const Navbar = () => {
                                         <span>INITIALIZE SYSTEM ACCESS</span>
                                     </button>
                                 )}
-                                <Link
-                                    to="/admin"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="w-full py-4 bg-white/5 border border-white/10 text-white text-center font-black uppercase tracking-widest text-[10px] rounded-2xl hover:bg-white/10 transition-all"
-                                >
-                                    SYSTEM CONSOLE
-                                </Link>
                             </div>
                         </div>
                     </motion.div>

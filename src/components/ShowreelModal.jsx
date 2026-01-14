@@ -4,6 +4,20 @@ import { X } from 'lucide-react';
 import CinematicPlayer from './CinematicPlayer';
 
 const ShowreelModal = ({ isOpen, onClose, videoUrl }) => {
+    React.useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-active');
+        } else {
+            document.body.style.overflow = 'unset';
+            document.body.classList.remove('modal-active');
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.body.classList.remove('modal-active');
+        };
+    }, [isOpen]);
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -14,7 +28,7 @@ const ShowreelModal = ({ isOpen, onClose, videoUrl }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/95 backdrop-blur-xl z-[100]"
+                        className="fixed inset-0 bg-black/95 backdrop-blur-xl z-[9999]"
                     />
 
                     {/* Modal Wrapper */}
@@ -23,7 +37,7 @@ const ShowreelModal = ({ isOpen, onClose, videoUrl }) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}
                         transition={{ type: "spring", damping: 30, stiffness: 200 }}
-                        className="fixed inset-0 z-[101] flex items-end justify-center pb-20 pointer-events-none"
+                        className="fixed inset-0 z-[10000] flex items-end justify-center pb-20 pointer-events-none"
                     >
                         <div className="w-full max-w-4xl relative pointer-events-auto px-4 md:px-0">
                             {/* Close Button */}
