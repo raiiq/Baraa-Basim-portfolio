@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Camera, Film, Calendar } from 'lucide-react';
+import { X, Camera, Film, Calendar, Play } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 
 const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
