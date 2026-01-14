@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Camera, Film, Calendar, Play } from 'lucide-react';
+import { X, Camera, Film, Calendar, PlayCircle } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 
+// CACHE_BUST: 2026-01-14-16:48
 const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
     const [forceFullscreen, setForceFullscreen] = React.useState(false);
 
@@ -98,7 +99,7 @@ const ProjectModal = ({ project, isOpen, onClose, initialFullscreen }) => {
                                                 onClick={handleFullscreenLaunch}
                                                 className="w-full mb-8 py-4 bg-primary text-white font-black uppercase tracking-[0.2em] text-[10px] sm:text-xs rounded-xl flex items-center justify-center gap-3 hover:bg-primary/80 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,59,48,0.3)]"
                                             >
-                                                <Play size={16} fill="currentColor" /> Cinematic Playback // Full Screen
+                                                <PlayCircle size={16} fill="currentColor" /> Cinematic Playback // Full Screen
                                             </button>
                                         )}
 
