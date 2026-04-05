@@ -105,6 +105,15 @@ const Contact = () => {
                             </motion.a>
                         ))}
                     </div>
+                    <div className="pt-10 border-t border-white/5 space-y-4 max-w-[280px]">
+                        <div className="flex items-center gap-3">
+                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                            <span className="text-[9px] font-black text-white uppercase tracking-[0.3em] opacity-80">Encrypted Channel</span>
+                        </div>
+                        <p className="text-[10px] text-gray-500 font-bold uppercase leading-relaxed tracking-widest opacity-40">
+                            End-to-end encryption active. Identity verification enforced via Google OAuth to ensure secure peer-to-peer cinematic uplink.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Form Slab */}
@@ -192,7 +201,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto mt-16 sm:mt-24 md:mt-32 pt-8 sm:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 opacity-30">
+            <div className="max-w-7xl mx-auto mt-16 sm:mt-24 md:pt-32 pt-8 sm:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 opacity-30">
                 <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500 text-center md:text-left">
                     &copy; {new Date().getFullYear()} BARAA BASIM / CI-ALPHA OPS.
                 </p>

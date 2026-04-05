@@ -50,8 +50,9 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async () => {
-        // Use origin to ensure a clean redirect to the root section.
-        const currentUrl = window.location.origin;
+        // Use origin with a trailing slash to align with Supabase wildcard config
+        // and ensure the redirect domain matches exactly what's whitelisted
+        const currentUrl = `${window.location.origin}/`;
         console.log('Initiating login with redirect to:', currentUrl);
 
         const { error } = await supabase.auth.signInWithOAuth({
