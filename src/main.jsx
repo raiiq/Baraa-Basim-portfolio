@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { HashRouter } from 'react-router-dom'
 
 window.onerror = function (message, source, lineno) {
+  if (typeof message === 'string' && message.includes('_AutofillCallbackHandler')) return;
+  
   const div = document.createElement('div');
   div.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; background: red; color: white; z-index: 9999; padding: 20px;';
   div.innerText = 'Global Error: ' + message + ' at ' + source + ':' + lineno;
